@@ -143,13 +143,17 @@ check.commonprob <- function (commonprob)
       {
         ul <- min(commonprob[i,i], commonprob[j,j])
         ll <- max(commonprob[i,i]+commonprob[j,j]-1, 0)
-        if ((commonprob[i,j] > ul) || (commonprob[i,j] < ll))
+        if (commonprob[i,j] > ul) 
           {
-            retval <- FALSE
+            commoncommonprob[i,j] <- ul
             message[nm<-nm+1] <- 
-              paste("Error in Element (",i,",",j,
-                    "): Admissible values are in [",
-                    ll,",",ul,"].")
+              paste("Element (",i,",",j,"): changed to nearest Admissible upper limit [",ul,"].")
+          }
+        if (commonprob[i,j] < ll)
+          {
+          commoncommonprob[i,j] <- ll
+            message[nm<-nm+1] <- 
+              paste("Element (",i,",",j,"): changed to nearest Admissible lower limit [",ll,"].")
           }
       }
   }
