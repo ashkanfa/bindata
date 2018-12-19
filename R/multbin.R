@@ -145,17 +145,18 @@ check.commonprob <- function (commonprob)
         ll <- max(commonprob[i,i]+commonprob[j,j]-1, 0)
         if (commonprob[i,j] > ul) 
           {
-            commonprob[i,j] <- ul
-            message[nm<-nm+1] <- 
-              paste("Element (",i,",",j,"): changed to nearest Admissible upper limit [",ul,"].")
+            commonprob[i,j] = ul
+              message[nm<-nm+1] <- 
+                paste("Element (",i,",",j,"): changed to nearest Admissible upper limit [",ul,"].")
           }
         if (commonprob[i,j] < ll)
           {
-          commonprob[i,j] <- ll
+          commonprob[i,j] = ll
             message[nm<-nm+1] <- 
               paste("Element (",i,",",j,"): changed to nearest Admissible lower limit [",ll,"].")
           }
       }
+    
   }
   
   ## check triple conditions
